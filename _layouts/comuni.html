@@ -1,23 +1,29 @@
 ---
 layout: default
 ---
-<div class="container"
+
+<h2>Dati Comuni:</h2>
+<ul>
+  {% for comune in site.data.comuni %}
+    <li>{{ comune.nome }} (ID: {{ comune.id }})</li>
+  {% endfor %}
+</ul>
+
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Username</th>
-      <th scope="col">Azioni</th> <!-- Colonna Azioni -->
+      <th scope="col">Comune</th>
+      <th scope="col">Link Pagina</th>
     </tr>
   </thead>
   <tbody>
-    {% for user in site.data.users %}
+    {% for comune in site.data.comuni %}
     <tr>
-      <th scope="row">{{ comuni.id }}</th>
-      <td>{{ comuni.nome }}</td>
+      <th scope="row">{{ comune.id }}</th>
+      <td>{{ comune.nome }}</td>
       <td><a href="{{ comune.link }}">Vai alla pagina di competenza</a></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-</div>
