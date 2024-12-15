@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-  <h1>Comuni & Servizi</h1>
-  <input type="text" id="search-bar" placeholder="Buscar Comuni..." onkeyup="searchComuni()">
-  <ul id="results">
-    <!-- Aquí se mostrarán los resultados de la búsqueda -->
-  </ul>
+<div class="search-container">
+    <input type="text" id="searchInput" class="search-box" placeholder="Cerca un comune..." onkeyup="searchComuni()">
+    <div id="results" class="results"></div>
+  </div>
 
   <script>
+    // Lista completa dei comuni e link
     const comuni = [
       { nome: "Azzano Decimo", link: "/comuni/azzano-decimo" },
       { nome: "Cordenons", link: "/comuni/cordenons" },
@@ -59,23 +59,37 @@ layout: default
       { nome: "Bagnaria Arsa", link: "/comuni/bagnaria-arsa" },
       { nome: "Tiezzo", link: "/comuni/tiezzo" },
       { nome: "Gorizia", link: "/comuni/gorizia" },
-      // Agregar más comuni según sea necesario
+      { nome: "Monfalcone", link: "/comuni/monfalcone" },
+      { nome: "Gradisca d'Isonzo", link: "/comuni/gradisca-d-isonzo" },
+      { nome: "Staranzano", link: "/comuni/staranzano" },
+      { nome: "Cormons", link: "/comuni/cormons" },
+      { nome: "Sagrado", link: "/comuni/sagrado" },
+      { nome: "San Canzian d'Isonzo", link: "/comuni/san-canzian-d-isonzo" },
+      { nome: "Savogna d'Isonzo", link: "/comuni/savogna-d-isonzo" },
+      { nome: "Fogliano Redipuglia", link: "/comuni/fogliano-redipuglia" },
+      { nome: "Romans d'Isonzo", link: "/comuni/romans-d-isonzo" },
+      { nome: "Doberdò del Lago", link: "/comuni/doberdò-del-lago" },
+      { nome: "Villesse", link: "/comuni/villesse" },
+      { nome: "Turriaco", link: "/comuni/turriaco" },
+      { nome: "San Pier d'Isonzo", link: "/comuni/san-pier-d-isonzo" }
     ];
 
     function searchComuni() {
-      const query = document.getElementById('search-bar').value.toLowerCase();
-      const results = comuni.filter(comune => comune.nome.toLowerCase().includes(query));
-      
-      const resultList = document.getElementById('results');
-      resultList.innerHTML = '';
-      
-      results.forEach(comune => {
-        const listItem = document.createElement('li');
-        const link = document.createElement('a');
-        link.href = comune.link;
-        link.textContent = comune.nome;
-        listItem.appendChild(link);
-        resultList.appendChild(listItem);
-      });
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let results = document.getElementById('results');
+      results.innerHTML = '';
+
+      if (input.length > 0) {
+        let filteredComuni = comuni.filter(comune => comune.nome.toLowerCase().includes(input));
+        filteredComuni.forEach(comune => {
+          let div = document.createElement('div');
+          div.classList.add('result-item');
+          div.innerHTML = `<a href="${comune.link}">${comune.nome}</a>`;
+          results.appendChild(div);
+        });
+      }
     }
   </script>
+
+</body>
+</html>
