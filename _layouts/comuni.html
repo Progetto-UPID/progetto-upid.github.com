@@ -1,30 +1,42 @@
 ---
 layout: default
 ---
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-box" onkeyup="filterComuni()" placeholder="Cerca un comune...">
+        <ul id="comuneList" class="comune-list">
+            <li class="comune-item"><a href="/comuni/azzano-decimo">Azzano Decimo</a></li>
+            <li class="comune-item"><a href="/comuni/cordenons">Cordenons</a></li>
+            <li class="comune-item"><a href="/comuni/maniago">Maniago</a></li>
+            <li class="comune-item"><a href="/comuni/fontanafredda">Fontanafredda</a></li>
+            <li class="comune-item"><a href="/comuni/sacile">Sacile</a></li>
+            <li class="comune-item"><a href="/comuni/san-vito-al-tagliamento">San Vito al Tagliamento</a></li>
+            <li class="comune-item"><a href="/comuni/portogruaro">Portogruaro</a></li>
+            <li class="comune-item"><a href="/comuni/spilimbergo">Spilimbergo</a></li>
+            <li class="comune-item"><a href="/comuni/brugnera">Brugnera</a></li>
+            <li class="comune-item"><a href="/comuni/prata-di-pordenone">Prata di Pordenone</a></li>
+            <li class="comune-item"><a href="/comuni/zoppola">Zoppola</a></li>
+            <li class="comune-item"><a href="/comuni/pordenone">Pordenone</a></li>
+            <li class="comune-item"><a href="/comuni/fanna">Fanna</a></li>
+            <li class="comune-item"><a href="/comuni/castelnovo-del-friuli">Castelnovo del Friuli</a></li>
+            <!-- Aggiungi qui tutti gli altri comuni -->
+        </ul>
+    </div>
 
-<h2>Dati Comuni:</h2>
-<ul>
-  {% for comune in site.data.comuni %}
-    <li>{{ comune.nome }} (ID: {{ comune.id }})</li>
-  {% endfor %}
-</ul>
-<div class="container">
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Comune</th>
-      <th scope="col">Link Pagina</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for comune in site.data.comuni %}
-    <tr>
-      <th scope="row">{{ comune.id }}</th>
-      <td>{{ comune.nome }}</td>
-      <td><a href="{{ comune.link }}">Vai alla pagina di competenza</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-</div>
+    <script>
+        function filterComuni() {
+            var input, filter, list, items, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toUpperCase();
+            list = document.getElementById('comuneList');
+            items = list.getElementsByTagName('li');
+            
+            for (i = 0; i < items.length; i++) {
+                txtValue = items[i].textContent || items[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
