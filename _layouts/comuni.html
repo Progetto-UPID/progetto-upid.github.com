@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="container"
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Azioni</th> <!-- Colonna Azioni -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in site.data.users %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td><a href="{{ user.link }}">Vai alla pagina di competenza</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
