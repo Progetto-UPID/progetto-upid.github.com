@@ -1,42 +1,81 @@
 ---
 layout: default
 ---
-    <div class="search-container">
-        <input type="text" id="searchInput" class="search-box" onkeyup="filterComuni()" placeholder="Cerca un comune...">
-        <ul id="comuneList" class="comune-list">
-            <li class="comune-item"><a href="/comuni/azzano-decimo">Azzano Decimo</a></li>
-            <li class="comune-item"><a href="/comuni/cordenons">Cordenons</a></li>
-            <li class="comune-item"><a href="/comuni/maniago">Maniago</a></li>
-            <li class="comune-item"><a href="/comuni/fontanafredda">Fontanafredda</a></li>
-            <li class="comune-item"><a href="/comuni/sacile">Sacile</a></li>
-            <li class="comune-item"><a href="/comuni/san-vito-al-tagliamento">San Vito al Tagliamento</a></li>
-            <li class="comune-item"><a href="/comuni/portogruaro">Portogruaro</a></li>
-            <li class="comune-item"><a href="/comuni/spilimbergo">Spilimbergo</a></li>
-            <li class="comune-item"><a href="/comuni/brugnera">Brugnera</a></li>
-            <li class="comune-item"><a href="/comuni/prata-di-pordenone">Prata di Pordenone</a></li>
-            <li class="comune-item"><a href="/comuni/zoppola">Zoppola</a></li>
-            <li class="comune-item"><a href="/comuni/pordenone">Pordenone</a></li>
-            <li class="comune-item"><a href="/comuni/fanna">Fanna</a></li>
-            <li class="comune-item"><a href="/comuni/castelnovo-del-friuli">Castelnovo del Friuli</a></li>
-            <!-- Aggiungi qui tutti gli altri comuni -->
-        </ul>
-    </div>
+  <h1>Comuni & Servizi</h1>
+  <input type="text" id="search-bar" placeholder="Buscar Comuni..." onkeyup="searchComuni()">
+  <ul id="results">
+    <!-- Aquí se mostrarán los resultados de la búsqueda -->
+  </ul>
 
-    <script>
-        function filterComuni() {
-            var input, filter, list, items, i, txtValue;
-            input = document.getElementById('searchInput');
-            filter = input.value.toUpperCase();
-            list = document.getElementById('comuneList');
-            items = list.getElementsByTagName('li');
-            
-            for (i = 0; i < items.length; i++) {
-                txtValue = items[i].textContent || items[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    items[i].style.display = "";
-                } else {
-                    items[i].style.display = "none";
-                }
-            }
-        }
-    </script>
+  <script>
+    const comuni = [
+      { nome: "Azzano Decimo", link: "/comuni/azzano-decimo" },
+      { nome: "Cordenons", link: "/comuni/cordenons" },
+      { nome: "Maniago", link: "/comuni/maniago" },
+      { nome: "Fontanafredda", link: "/comuni/fontanafredda" },
+      { nome: "Sacile", link: "/comuni/sacile" },
+      { nome: "San Vito al Tagliamento", link: "/comuni/san-vito-al-tagliamento" },
+      { nome: "Portogruaro", link: "/comuni/portogruaro" },
+      { nome: "Spilimbergo", link: "/comuni/spilimbergo" },
+      { nome: "Brugnera", link: "/comuni/brugnera" },
+      { nome: "Prata di Pordenone", link: "/comuni/prata-di-pordenone" },
+      { nome: "Zoppola", link: "/comuni/zoppola" },
+      { nome: "Pordenone", link: "/comuni/pordenone" },
+      { nome: "Fanna", link: "/comuni/fanna" },
+      { nome: "Castelnovo del Friuli", link: "/comuni/castelnovo-del-friuli" },
+      { nome: "San Quirino", link: "/comuni/san-quirino" },
+      { nome: "Pravisdomini", link: "/comuni/pravisdomini" },
+      { nome: "Valvasone Arzene", link: "/comuni/valvasone-arzene" },
+      { nome: "Chions", link: "/comuni/chions" },
+      { nome: "Polcenigo", link: "/comuni/polcenigo" },
+      { nome: "Budoia", link: "/comuni/budoia" },
+      { nome: "Susegana", link: "/comuni/susegana" },
+      { nome: "Sappada", link: "/comuni/sappada" },
+      { nome: "Vito d'Asio", link: "/comuni/vito-d-asio" },
+      { nome: "Vivaro", link: "/comuni/vivaro" },
+      { nome: "Roveredo in Piano", link: "/comuni/roveredo-in-piano" },
+      { nome: "Clauzetto", link: "/comuni/clauzetto" },
+      { nome: "Andreis", link: "/comuni/andreis" },
+      { nome: "San Giorgio della Richinvelda", link: "/comuni/san-giorgio-della-richinvelda" },
+      { nome: "Cinto Caomaggiore", link: "/comuni/cinto-caomaggiore" },
+      { nome: "Fiume Veneto", link: "/comuni/fiume-veneto" },
+      { nome: "Cavigliano", link: "/comuni/cavigliano" },
+      { nome: "Casarsa della Delizia", link: "/comuni/casarsa-della-delizia" },
+      { nome: "Pasiano di Pordenone", link: "/comuni/pasiano-di-pordenone" },
+      { nome: "San Martino al Tagliamento", link: "/comuni/san-martino-al-tagliamento" },
+      { nome: "Porcia", link: "/comuni/porcia" },
+      { nome: "San Stino di Livenza", link: "/comuni/san-stino-di-livenza" },
+      { nome: "Meduno", link: "/comuni/meduno" },
+      { nome: "Morsano al Tagliamento", link: "/comuni/morsano-al-tagliamento" },
+      { nome: "Pradamano", link: "/comuni/pradamano" },
+      { nome: "Rorai Grande", link: "/comuni/rorai-grande" },
+      { nome: "Corva", link: "/comuni/corva" },
+      { nome: "Muggia", link: "/comuni/muggia" },
+      { nome: "San Michele al Tagliamento", link: "/comuni/san-michele-al-tagliamento" },
+      { nome: "Rivarotta", link: "/comuni/rivarotta" },
+      { nome: "Torre di Pordenone", link: "/comuni/torre-di-pordenone" },
+      { nome: "Sequals", link: "/comuni/sequals" },
+      { nome: "Comina", link: "/comuni/comina" },
+      { nome: "Bagnaria Arsa", link: "/comuni/bagnaria-arsa" },
+      { nome: "Tiezzo", link: "/comuni/tiezzo" },
+      { nome: "Gorizia", link: "/comuni/gorizia" },
+      // Agregar más comuni según sea necesario
+    ];
+
+    function searchComuni() {
+      const query = document.getElementById('search-bar').value.toLowerCase();
+      const results = comuni.filter(comune => comune.nome.toLowerCase().includes(query));
+      
+      const resultList = document.getElementById('results');
+      resultList.innerHTML = '';
+      
+      results.forEach(comune => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = comune.link;
+        link.textContent = comune.nome;
+        listItem.appendChild(link);
+        resultList.appendChild(listItem);
+      });
+    }
+  </script>
