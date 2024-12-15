@@ -23,68 +23,7 @@
         <div class="card card-bg">
           <div class="card-body">
             <h5 class="card-title">Motore di ricerca </h5>
-                <div id="library-search-widget">
-                    <input type="text" id="library-search-input" placeholder="Cerca una biblioteca...">
-                    <button id="library-search-button">Cerca</button>
-                    <div id="library-search-results"></div>
-                </div>
-            <script>
-            document.getElementById("library-search-button").addEventListener("click", function() {
-    const query = document.getElementById("library-search-input").value.toLowerCase();
-    const resultsContainer = document.getElementById("library-search-results");
-    
-    // Array di esempio con le biblioteche
-    const libraries = [
-        { name: "biblioteche", url: "/biblioteche/" },
-        { name: "scuole", url: "/scuole/" },
-        { name: "Servizi", url: "/biblioteche/" },
-        { name: "Risorse Digitali", url: "/risorse-digitali/" },
-        { name: "Orientamento scuole superiori", url: "/orientamento/superiori/" },
-        { name: "Orientamento università", url: "/orientamento/università/" },
-        { name: "Amministrazione Trasparente", url: "/amministrazione-trasparente/" },
-        { name: "Chi siamo", url: "/chi-siamo/" },
-        { name: "blog", url: "/blog-ufficiale/" },
-        { name: "privacy", url: "/privacy/" },
-        { name: "contatti", url: "/contatti/" },
-        { name: "Biblioteca Comunale di Porcia", url: "/biblioteche/porcia/" },
-        { name: "Biblioteca Comunale di Fontanafredda", url: "/biblioteche/fontanafredda/" },
-        { name: "Biblioteca Comunale di Pordenone", url: "/biblioteche/pordenone/" },
-        { name: "Biblioteca Comunale di Trieste", url: "/biblioteche/trieste/" },
-        { name: "Biblioteca Comunale di Udine", url: "/biblioteche/udine/" },
-        { name: "Biblioteca Comunale di aviano", url: "/biblioteche/aviano/" },
-        { name: "Biblioteca Comunale di Sacile", url: "/biblioteche/Sacile/" },
-        { name: "documenti", url: "/documenti/" },
-        { name: "Avvisi", url: "/documenti/avvisi/" },
-        { name: "Note Legali", url: "/note-legali/" },
-        { name: "Scuole a Fontanafredda", url: "/scuole/fontanafredda/" },
-        { name: "Scuole a Pordenone", url: "/scuole/pordenone/" },
-        { name: "Scuole a Gorizia", url: "/scuole/Gorizia/" },
-        { name: "Scuole a Porcia", url: "/scuole/Porcia/" },
-        { name: "Scuole a San Vito al Tagliamento", url: "/scuole/san-vito-al-tagliamento/" },
-        { name: "Scuole a Aviano", url: "/scuole/Aviano/" },
-        { name: "Scuole a Roveredo in piano", url: "/scuole/roveredo-in-piano/" },
-        { name: "Scuole a sacile", url: "/scuole/sacile/" },
-        { name: "privacy", url: "/privacy/" },
-        { name: "privacy", url: "/privacy/" },
-    ];
-
-    // Filtra le biblioteche in base alla query
-    const filteredLibraries = libraries.filter(library => library.name.toLowerCase().includes(query));
-
-    // Mostra i risultati
-    resultsContainer.innerHTML = '';
-    if (filteredLibraries.length > 0) {
-        filteredLibraries.forEach(library => {
-            const div = document.createElement("div");
-            div.classList.add("result-item");
-            div.innerHTML = `<a href="${library.url}" target="_blank">${library.name}</a>`;
-            resultsContainer.appendChild(div);
-        });
-    } else {
-        resultsContainer.innerHTML = '<div class="result-item">Nessuna biblioteca trovata.</div>';
-    }
-});
-</script>
+            <p>About</p>
           </div>
         </div>
       </div>
