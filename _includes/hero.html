@@ -23,7 +23,11 @@
         <div class="card card-bg">
           <div class="card-body">
             <h5 class="card-title">Motore di ricerca </h5>
-              <p>Ricerca in tutte le biblioteche!</p>
+                <div id="library-search-widget">
+                    <input type="text" id="library-search-input" placeholder="Cerca una biblioteca...">
+                    <button id="library-search-button">Cerca</button>
+                    <div id="library-search-results"></div>
+                </div>
             <script>
             document.getElementById("library-search-button").addEventListener("click", function() {
     const query = document.getElementById("library-search-input").value.toLowerCase();
@@ -56,7 +60,6 @@
     }
 });
 </script>
-          </a>
           </div>
         </div>
       </div>
