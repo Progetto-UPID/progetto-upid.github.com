@@ -1,0 +1,9 @@
+- id: 1
+  nome: Milano
+  link: "/comuni/milano"
+- id: 2
+  nome: Roma
+  link: "/comuni/roma"
+- id: 3
+  nome: Torino
+  link: "/comuni/torino"
