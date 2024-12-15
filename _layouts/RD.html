@@ -7,18 +7,18 @@ permalink: {{ page.permalink }}
 
 <div class="container mt-5">
   <h1 class="text-center">{{ page.title }}</h1>
-  <p class="text-center">Benvenuti nella sezione delle **risorse digitali**.</p>
+  <p class="text-center">Benvenuti nella sezione delle risorse digitali.</p>
 
   <div class="row mt-4">
     {% if page.resources %}
       {% for resource in page.resources %}
         <div class="col-md-4 mb-4">
           <div class="card">
-            <img src="{{ resource.image }}" class="card-img-top" alt="{{ resource.title }}">
+            <img src="https://github.com/Progetto-UPID/progetto-upid.github.com/blob/master/assets/Progetto%20senza%20titolo%20(4).png?raw=true" class="card-img-top" alt="{{ resource.title }}">
             <div class="card-body">
               <h5 class="card-title">{{ resource.title }}</h5>
               <p class="card-text">{{ resource.description }}</p>
-              <a href="{{ resource.link }}" class="btn btn-primary" target="_blank">Accedi</a>
+              <a href="{{ resource.link }}" class="btn btn-primary" target="_blank">Accedi al servizio</a>
             </div>
           </div>
         </div>
