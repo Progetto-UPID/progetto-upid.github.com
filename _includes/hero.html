@@ -22,14 +22,40 @@
       <div class="card-wrapper card-space">
         <div class="card card-bg">
           <div class="card-body">
-            <h5 class="card-title">I nostri motori di ricerca</h5>
-            <p class="card-text">Scopri i nostri motori di ricerca, per cercare in tutte le università, biblioteche, musei, teatri e centri giovani!</p>
-            <a class="read-more" href="/ricerca-semplice/">
-              <span class="text">Leggi di più</span>
-              <svg class="icon">
-                <use xlink:href="{{ site.baseurl }}/assets/bootstrap-italia/dist/svg/sprite.svg#it-arrow-right"></use>
-              </svg>
-            </a>
+            <h5 class="card-title">Motore di ricerca </h5>
+              <p>Ricerca in tutte le biblioteche!</p>
+            document.getElementById("library-search-button").addEventListener("click", function() {
+    const query = document.getElementById("library-search-input").value.toLowerCase();
+    const resultsContainer = document.getElementById("library-search-results");
+    
+    // Array di esempio con le biblioteche
+    const libraries = [
+        { name: "Biblioteca Nazionale Centrale di Roma", url: "https://www.bncrm.beniculturali.it/" },
+        { name: "Biblioteca Comunale di Milano", url: "https://www.biblioteche.comune.milano.it/" },
+        { name: "Biblioteca Comunale di Fontanafredda", url: "https://www.fontanafredda.infoteca.it/" },
+        { name: "Biblioteca di Bologna", url: "https://www.bibliotechebologna.it/" },
+        { name: "Biblioteca Nazionale di Firenze", url: "https://www.bncf.firenze.sbn.it/" },
+        { name: "Biblioteca Civica di Trieste", url: "https://www.bibliotechetrieste.it/" }
+    ];
+
+    // Filtra le biblioteche in base alla query
+    const filteredLibraries = libraries.filter(library => library.name.toLowerCase().includes(query));
+
+    // Mostra i risultati
+    resultsContainer.innerHTML = '';
+    if (filteredLibraries.length > 0) {
+        filteredLibraries.forEach(library => {
+            const div = document.createElement("div");
+            div.classList.add("result-item");
+            div.innerHTML = `<a href="${library.url}" target="_blank">${library.name}</a>`;
+            resultsContainer.appendChild(div);
+        });
+    } else {
+        resultsContainer.innerHTML = '<div class="result-item">Nessuna biblioteca trovata.</div>';
+    }
+});
+
+          </a>
           </div>
         </div>
       </div>
