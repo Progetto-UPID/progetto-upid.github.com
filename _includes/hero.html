@@ -24,6 +24,7 @@
           <div class="card-body">
             <h5 class="card-title">Motore di ricerca </h5>
               <p>Ricerca in tutte le biblioteche!</p>
+            <script>
             document.getElementById("library-search-button").addEventListener("click", function() {
     const query = document.getElementById("library-search-input").value.toLowerCase();
     const resultsContainer = document.getElementById("library-search-results");
@@ -54,7 +55,7 @@
         resultsContainer.innerHTML = '<div class="result-item">Nessuna biblioteca trovata.</div>';
     }
 });
-
+</script>
           </a>
           </div>
         </div>
