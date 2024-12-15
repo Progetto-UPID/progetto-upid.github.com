@@ -1,5 +1,5 @@
 ---
 layout: comuni
-title: Lista Utenti
-permalink: /users/
+title: Comuni
+permalink: /comuni/
 ---
